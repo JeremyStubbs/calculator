@@ -139,7 +139,10 @@ class Ui_MainWindow(object):
             self.lastup = "second"
 
         elif self.second_argument and arg == "=":
-            self.result = str(eval (self.result+self.operator+self.second_argument))
+            try:
+                self.result = str(eval (self.result+self.operator+self.second_argument))
+            except Exception as e:
+                self.result = str(e)
             self.operator=""
             self.second_argument = ""
             self.lastup = ""
@@ -195,5 +198,6 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec())
+    
 
 
